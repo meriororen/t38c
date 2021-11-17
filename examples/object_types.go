@@ -5,7 +5,7 @@ package main
 import (
 	"log"
 
-	"github.com/xjem/t38c"
+	"github.com/meriororen/t38c"
 	geojson "github.com/paulmach/go.geojson"
 )
 

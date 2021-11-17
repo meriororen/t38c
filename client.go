@@ -7,7 +7,7 @@ import (
 	"log"
 
 	"github.com/tidwall/gjson"
-	"github.com/xjem/t38c/transport"
+	"github.com/meriororen/t38c/transport"
 )
 
 // Client allows you to interact with the Tile38 server.

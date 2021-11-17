@@ -8,7 +8,7 @@ import (
 
 	geojson "github.com/paulmach/go.geojson"
 	"github.com/stretchr/testify/require"
-	"github.com/xjem/t38c"
+	"github.com/meriororen/t38c"
 )
 
 func TestE2E(t *testing.T) {

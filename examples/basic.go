@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/xjem/t38c"
+	"github.com/meriororen/t38c"
 )
 
 func main() {
