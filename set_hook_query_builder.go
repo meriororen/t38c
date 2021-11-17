@@ -24,7 +24,7 @@ func newSetHookQueryBuilder(client tile38Client, name, endpoint string, query cm
 	}
 }
 
-func (query SetHookQueryBuilder) toCmd() cmd {
+func (query SetHookQueryBuilder) ToCmd() cmd {
 	args := []string{query.name, strings.Join(query.endpoints, ",")}
 	for _, meta := range query.metas {
 		args = append(args, "META", meta.Name, meta.Value)
@@ -41,7 +41,7 @@ func (query SetHookQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query SetHookQueryBuilder) Do() error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.jExecute(nil, cmd.Name, cmd.Args...)
 }
 

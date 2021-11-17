@@ -20,7 +20,7 @@ func newInwQueryBuilder(client tile38Client, cmd, key string, area cmd) InwQuery
 	}
 }
 
-func (query InwQueryBuilder) toCmd() cmd {
+func (query InwQueryBuilder) ToCmd() cmd {
 	args := []string{query.key}
 	args = append(args, query.searchOpts.Args()...)
 	if query.outputFormat != nil {
@@ -35,7 +35,7 @@ func (query InwQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query InwQueryBuilder) Do() (*SearchResponse, error) {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	resp := new(SearchResponse)
 	err := query.client.jExecute(resp, cmd.Name, cmd.Args...)
 	return resp, err

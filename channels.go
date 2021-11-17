@@ -41,7 +41,7 @@ func (ch *Channels) PSubscribe(ctx context.Context, handler func(*GeofenceEvent)
 // Once the channel is created a client can then listen for events on that channel with SUBSCRIBE or PSUBSCRIBE.
 // If expiration less than 0, it will be ignored
 func (ch *Channels) SetChan(name string, query GeofenceQueryBuilder) SetChannelQueryBuilder {
-	return newSetChannelQueryBuilder(ch.client, name, query.toCmd())
+	return newSetChannelQueryBuilder(ch.client, name, query.ToCmd())
 }
 
 // Subscribe subscribes the client to the specified Channels.

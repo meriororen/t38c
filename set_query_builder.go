@@ -23,7 +23,7 @@ func newSetQueryBuilder(client tile38Client, key, objectID string, area cmd) Set
 	}
 }
 
-func (query SetQueryBuilder) toCmd() cmd {
+func (query SetQueryBuilder) ToCmd() cmd {
 	args := []string{query.key, query.objectID}
 	if query.nx {
 		args = append(args, "NX")
@@ -48,7 +48,7 @@ func (query SetQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query SetQueryBuilder) Do() error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.jExecute(nil, cmd.Name, cmd.Args...)
 }
 

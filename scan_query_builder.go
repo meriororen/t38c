@@ -15,7 +15,7 @@ func newScanQueryBuilder(client tile38Client, key string) ScanQueryBuilder {
 	}
 }
 
-func (query ScanQueryBuilder) toCmd() cmd {
+func (query ScanQueryBuilder) ToCmd() cmd {
 	args := []string{query.key}
 	args = append(args, query.opts.Args()...)
 	if query.outputFormat != nil {
@@ -28,7 +28,7 @@ func (query ScanQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query ScanQueryBuilder) Do() (*SearchResponse, error) {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	resp := &SearchResponse{}
 	err := query.client.jExecute(&resp, cmd.Name, cmd.Args...)
 	if err != nil {

@@ -17,7 +17,7 @@ func newFSetQueryBuilder(client tile38Client, key, objectID string) FSetQueryBui
 	}
 }
 
-func (query FSetQueryBuilder) toCmd() cmd {
+func (query FSetQueryBuilder) ToCmd() cmd {
 	args := []string{query.key, query.objectID}
 	if query.xx {
 		args = append(args, "XX")
@@ -31,7 +31,7 @@ func (query FSetQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query FSetQueryBuilder) Do() error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.jExecute(nil, cmd.Name, cmd.Args...)
 }
 

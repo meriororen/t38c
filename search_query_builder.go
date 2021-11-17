@@ -15,7 +15,7 @@ func newSearchQueryBuilder(client tile38Client, key string) SearchQueryBuilder {
 	}
 }
 
-func (query SearchQueryBuilder) toCmd() cmd {
+func (query SearchQueryBuilder) ToCmd() cmd {
 	args := []string{query.key}
 	args = append(args, query.opts.Args()...)
 	if query.outputFormat != nil {
@@ -28,7 +28,7 @@ func (query SearchQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query SearchQueryBuilder) Do() (*SearchResponse, error) {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	resp := new(SearchResponse)
 	err := query.client.jExecute(&resp, cmd.Name, cmd.Args...)
 	return resp, err

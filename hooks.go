@@ -32,5 +32,5 @@ func (hooks *Hooks) PDelHook(pattern string) error {
 // SetHook creates a webhook which points to a geofenced search.
 // If a hook is already associated to that name, it’ll be overwritten.
 func (hooks *Hooks) SetHook(name, endpoint string, query GeofenceQueryBuilder) SetHookQueryBuilder {
-	return newSetHookQueryBuilder(hooks.client, name, endpoint, query.toCmd())
+	return newSetHookQueryBuilder(hooks.client, name, endpoint, query.ToCmd())
 }

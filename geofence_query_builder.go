@@ -43,7 +43,7 @@ func newGeofenceRoamQueryBuilder(client tile38Client, key, target, pattern strin
 	}
 }
 
-func (query GeofenceQueryBuilder) toCmd() cmd {
+func (query GeofenceQueryBuilder) ToCmd() cmd {
 	args := []string{query.key}
 	args = append(args, query.searchOpts.Args()...)
 	args = append(args, "FENCE")
@@ -80,7 +80,7 @@ func (query GeofenceQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query GeofenceQueryBuilder) Do(ctx context.Context, handler func(*GeofenceEvent)) error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.ExecuteStream(ctx, rawEventHandler(handler), cmd.Name, cmd.Args...)
 }
 

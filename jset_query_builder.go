@@ -21,7 +21,7 @@ func newJSetQueryBuilder(client tile38Client, key, objectID, path, value string)
 	}
 }
 
-func (query JSetQueryBuilder) toCmd() cmd {
+func (query JSetQueryBuilder) ToCmd() cmd {
 	args := []string{
 		query.key, query.objectID, query.path, query.value,
 	}
@@ -38,7 +38,7 @@ func (query JSetQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query JSetQueryBuilder) Do() error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.jExecute(nil, cmd.Name, cmd.Args...)
 }
 

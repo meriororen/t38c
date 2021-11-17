@@ -19,7 +19,7 @@ func newSetChannelQueryBuilder(client tile38Client, name string, query cmd) SetC
 	}
 }
 
-func (query SetChannelQueryBuilder) toCmd() cmd {
+func (query SetChannelQueryBuilder) ToCmd() cmd {
 	args := []string{query.name}
 	for _, meta := range query.metas {
 		args = append(args, "META", meta.Name, meta.Value)
@@ -36,7 +36,7 @@ func (query SetChannelQueryBuilder) toCmd() cmd {
 
 // Do cmd
 func (query SetChannelQueryBuilder) Do() error {
-	cmd := query.toCmd()
+	cmd := query.ToCmd()
 	return query.client.jExecute(nil, cmd.Name, cmd.Args...)
 }
 
