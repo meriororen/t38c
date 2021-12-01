@@ -82,6 +82,15 @@ func (query ScanQueryBuilder) Where(field string, min, max float64) ScanQueryBui
 	return query
 }
 
+// WhereEval queries with lua script
+func (query ScanQueryBuilder) WhereEval(script string, args ...string) ScanQueryBuilder {
+	query.opts.WhereEval = append(query.opts.WhereEval, whereEvalOpt{
+		Name: script,
+		Args: args,
+	})
+	return query
+}
+
 // Wherein is similar to Where except that it checks whether the object’s field value is in a given list.
 func (query ScanQueryBuilder) Wherein(field string, values ...float64) ScanQueryBuilder {
 	query.opts.Wherein = append(query.opts.Wherein, whereinOpt{
